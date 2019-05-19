@@ -1,7 +1,7 @@
 
 unit main;
 
-interface
+interface       // слава балбес  и да ы
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, Dialogs, 

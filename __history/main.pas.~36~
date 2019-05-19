@@ -89,26 +89,30 @@ implementation
 
 {$R *.dfm}
 
-uses newPeople, PeopleJournal, BookList, PeopleInform;
+uses newPeople, PeopleJournal, BookList, PeopleInform, login;
 
 
 procedure TForm1.bGeneralJournalClick(Sender: TObject);
 begin
+Application.CreateForm(TForm5, Form5);
  Form5.showmodal;
 end;
 
 procedure TForm1.bInfPeopleClick(Sender: TObject);
 begin
+Application.CreateForm(TForm8, Form8);
 Form8.ShowModal;
 end;
 
 procedure TForm1.bJornalPeopleClick(Sender: TObject);
 begin
+  Application.CreateForm(TForm4, Form4);
   Form4.ShowModal;
 end;
 
 procedure TForm1.bNewPeopleClick(Sender: TObject);
 begin
+  Application.CreateForm(TForm3, Form3);
   Form3.ShowModal;
   uqPeople.Refresh;
 end;
@@ -117,6 +121,7 @@ end;
 
 procedure TForm1.dxBarButton1Click(Sender: TObject);
 begin
+Application.CreateForm(TForm5, Form5);
 Form5.ShowModal;
 end;
 
@@ -127,7 +132,7 @@ var s: string;
 begin
   s:= #39;
   uqPeople.Close;
-  uqPeople.MacroByName('w').Value:= ' where p.name || lc.number  +  ilike ' + s +'%' + dxBarEdit3.Text + '%' + s;
+  uqPeople.MacroByName('w').Value:= ' where lc.number ilike ' + s +'%' + dxBarEdit3.Text + '%' + s;
   s := uqPeople.MacroByName('w').Value;
   uqPeople.Open;
 end;
@@ -137,6 +142,7 @@ begin
   DisableAero := True;
   uqPeople.Close;
   uqPeople.MacroByName('w').Value:= '';
+
   uqPeople.Open;
 end;
 
